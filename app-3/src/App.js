@@ -1,18 +1,60 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+
+    this.state = {
+      trainerName: "Ash Ketcham",
+      age: "Eternal Youth",
+      hometown: "Pallet Town",
+      rival: "Gary Oak",
+      inventory: [
+        'Pikachu',
+        'Sandshrew',
+        'Squirtle',
+        'Growlithe',
+        'Onyx',
+        'Magmar',
+        'Sentret',
+        'Butterfree',
+        'Arcainine',
+        'Ivysaur',
+        'Hitmonchan',
+        'Entei',
+        'Articuno',
+        'Poliwrath'
+      ],
+      query: ''
+    }
+  }
+  
+  handleFilter(value) {
+    this.setState({
+      query: value,
+    })
+  }
+
+
   render() {
+    const { inventory, query } = this.state;
+
+    let filteredInventory = inventory.filter( (val, i) => {
+      return val.includes( query );
+    }).map((e, i) => (
+      <div>
+        <h2>{e}</h2>
+      </div>
+    ));
+
+    
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Pokémon Inventory:</h1>
+        <input type="text"
+        onChange={ ( e ) => this.handleFilter(e.target.value)} value={this.state.query}/>
+          {filteredInventory}
       </div>
     );
   }
