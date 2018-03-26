@@ -18,15 +18,18 @@ class App extends Component {
 
   render() {
     let { list, userInput } = this.state;
-    var filteredList = list.filter( (e, i) => e.includes(userInput)).map( (e, i) => (
+    
+    var filteredList = list.filter((val, i) => (val.includes(userInput)) ).map( (e,i) => (
       <div key={i}>
         <h2>{e}</h2>
       </div>
-    ))
+    ));
+ 
 
     return (
       <div className="App">
-        <input type="text" onChange={ (e) => this.handleInput(e.target.value)}/>
+        <input type="text" onChange={ (e) => this.handleInput(e.target.value)}
+        value={userInput}/>
         {filteredList}
       </div>
     );
