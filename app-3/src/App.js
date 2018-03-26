@@ -5,31 +5,37 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      list: ['katsudon', 'oyakodon', 'sushi', 'katsu curry', 'udon', 'ramen'],
+      list: [
+        'katsudon',
+        'oyakodon',
+        'sushi',
+        'katsu curry',
+        'udon',
+        'ramen'],
       userInput: ''
     }
   }
 
   handleInput( e ) {
-    this.setState = ({
+    this.setState({
       userInput: e
     })
   }
 
   render() {
-    let { list, userInput } = this.state;
-    
-    var filteredList = list.filter((val, i) => (val.includes(userInput)) ).map( (e,i) => (
+    var { list, userInput } = this.state;
+
+    let filteredList = list.filter( (val, i) => (val.includes(userInput))).map( (e,i) => (
       <div key={i}>
         <h2>{e}</h2>
       </div>
-    ));
- 
+    ))
 
     return (
       <div className="App">
-        <input type="text" onChange={ (e) => this.handleInput(e.target.value)}
+        <input onChange={ (e) => this.handleInput(e.target.value)}
         value={userInput}/>
+        <h1>Japanese Food</h1>
         {filteredList}
       </div>
     );
