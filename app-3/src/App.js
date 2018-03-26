@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -19,8 +18,8 @@ class App extends Component {
 
   render() {
     let { list, userInput } = this.state;
-    var filteredList = list.filter( (e, i) => e.includes(userInput)).map( e => (
-      <div key={e}>
+    var filteredList = list.filter( (e, i) => e.includes(userInput)).map( (e, i) => (
+      <div key={i}>
         <h2>{e}</h2>
       </div>
     ))
