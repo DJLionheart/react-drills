@@ -19,7 +19,7 @@ class App extends Component {
 
   render() {
     let { list, userInput } = this.state;
-    var filteredList = list.filter( (e, i) => list[i].includes(userInput)).map( e => (
+    var filteredList = list.filter( (e, i) => e.includes(userInput)).map( e => (
       <div key={e}>
         <h2>{e}</h2>
       </div>
