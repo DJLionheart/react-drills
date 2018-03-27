@@ -1,15 +1,24 @@
 import React, {Component} from 'react';
 
 class NewTask extends Component {
-    
+    constructor() {
+        super();
+        this.state = {
+            userInput: ''
+        }
+    }
     handleInput( e ) {
-        
+        this.setState({
+            userInput: e
+        })
     }
 
     render() {
         return (
             <div>
-                <input onChange={(e) => this.props.handle( e.target.value )}/>
+                <input 
+                value={this.state.inputBox}
+                onChange={(e) => this.handleInput( e.target.value )} />
                 <button onClick={this.props.add}>Add</button>
             </div>
         )

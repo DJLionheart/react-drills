@@ -13,24 +13,14 @@ class App extends Component {
           'Beat Spelunky in Single-Player mode',
           'Master React'
         ],
-        userInput: ''
       }
 
       this.handleAddTask = this.handleAddTask.bind(this);
-      this.handleInput = this.handleInput.bind(this);
-      
     }
 
-  handleAddTask() {
+  handleAddTask( task ) {
     this.setState({
-      toDoList: [...this.state.toDoList, this.state.userInput],
-      userInput: ''
-    })
-  }
-
-  handleInput( e ){
-    this.setState({
-      userInput: e
+      toDoList: [...this.state.toDoList, task],
     })
   }
 
@@ -38,7 +28,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>My To-Do List:</h1>
-        <NewTask add={this.handleAddTask} handle={this.handleInput}/>
+        <NewTask add={this.handleAddTask}/>
         <List tasks={this.state.toDoList}/>
       </div>
     );
