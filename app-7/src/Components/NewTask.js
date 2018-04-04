@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+
 
 class NewTask extends Component {
     constructor() {
@@ -7,22 +8,34 @@ class NewTask extends Component {
             userInput: ''
         }
     }
-    handleInput( e ) {
+
+    handleUserInput(e) {
         this.setState({
             userInput: e
         })
     }
 
+    addTask() {
+        this.props.addTask( this.state.userInput );
+        this.setState({
+            userInput: ''
+        })
+    }
+
     render() {
-        return (
+        const { userInput } = this.state;
+
+        return(
             <div>
-                <input 
-                value={this.state.inputBox}
-                onChange={(e) => this.handleInput( e.target.value )} />
-                <button onClick={this.props.add}>Add</button>
+                <input onChange={ (e) => this.handleUserInput( e.target.value) }
+                placeholder="Enter new task..."
+                value={ this.state.userInput }/>
+                <button onClick={ () => this.addTask( userInput )}>Add</button>
             </div>
         )
     }
+
+
 }
 
 export default NewTask;

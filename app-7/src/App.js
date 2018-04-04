@@ -15,21 +15,24 @@ class App extends Component {
         ],
       }
 
-      this.handleAddTask = this.handleAddTask.bind(this);
+      this.addTask = this.addTask.bind(this);
     }
 
-  handleAddTask( task ) {
+  addTask( task ) {
     this.setState({
       toDoList: [...this.state.toDoList, task],
     })
   }
 
   render() {
+
+    const { toDoList } = this.state;
+
     return (
       <div className="App">
         <h1>My To-Do List:</h1>
-        <NewTask add={this.handleAddTask}/>
-        <List tasks={this.state.toDoList}/>
+        <NewTask addTask={ this.addTask }/>
+        <List toDoList={ toDoList }/>
       </div>
     );
   }

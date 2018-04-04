@@ -2,7 +2,7 @@ import React from 'react';
 
 function Todo (props) {
     return (
-        <p>{props.task}</p>
+        <p>{ props.task }</p>
     )
 }
 
